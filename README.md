@@ -1,1 +1,2 @@
 # IO-Test
+This site is designed to help you check the functionality and quality of various hardware components of your computer. With these tools, you can test your computer's display, keyboard, webcam, speakers, and microphone to ensure that they are functioning correctly. Each test has a brief description of what it is designed to check and how to use it. Simply follow the instructions provided in each section to run the test.
