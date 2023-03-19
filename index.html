@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IO Test</title>
-    <link rel="stylesheet" href="test-styles.css">
+    <link rel="stylesheet" href="light-mode.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="dark-mode.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="light-mode.css" id="lightmode">
+    <link rel="stylesheet" href="dark-mode.css" id="darkmode">
+    <title>IO Test</title>   
 </head>
 <body>
-    <div class="intro">
-        <h1>IO Test</h1>
+    <div class="title">
+        <h1><a href="https://iotest.rawills.uk">IO Test</a></h1><button onclick="toggleStylesheet()">Toggle Light/Dark</button>
+    </div>
+    <div>    
         <p>This site is designed to help you check the functionality and quality of various hardware components of your computer. With these tools, you can test your computer's display, keyboard, webcam, speakers, and microphone to ensure that they are functioning correctly. Each test has a brief description of what it is designed to check and how to use it. Simply follow the instructions provided in each section to run the test.</p>
     </div>
-
     <div class="test-section">
         <h2>Display Test</h2>
-        <p>Description: This test is designed to check the quality and functionality of the laptop's display...</p>
-        <p>How to use: Click the "Start Display Test" button, and the test will show a series of colors...</p>
+        <p>Description: The display test is designed to check the quality and functionality of the display. It will show different colors and patterns to help you identify any potential issues with the display, such as dead pixels, color inaccuracies, or other visual problems.</p>
+        <p>How to use: Click the "Start Display Test" button, and the test will show a series of colors and patterns on the screen. Examine the display closely for any irregularities or issues. When the test is complete, the screen will return to its original state.</p>
         <button id="start-display-test">Start Display Test</button>
         <div id="testArea"></div>
         <div id="display-test-container"></div>
@@ -23,46 +27,63 @@
 
     <div class="test-section">
         <h2>Keyboard Test</h2>
-        <p>Description: The keyboard test is designed to verify that all the keys on the laptop's keyboard are functioning correctly. It will visually indicate when a key is pressed, allowing you to ensure that each key is registering correctly.</p>
-        <p>How to use: Press each key on your laptop's keyboard. When a key is pressed, it will be highlighted on the virtual keyboard displayed on the screen. Ensure that all keys are registering correctly and that there are no issues with key responsiveness or key mapping.</p>
+        <p>Description: The keyboard test is designed to verify that all the keys on the keyboard are functioning correctly. It will visually indicate when a key is pressed, allowing you to ensure that each key is registering correctly.</p>
+        <p>How to use: Press each key on your keyboard. When a key is pressed, it will be highlighted on the virtual keyboard displayed on the screen. Ensure that all keys are registering correctly and that there are no issues with key responsiveness or key mapping.</p>
         <div id="keyboard"></div>
     </div>
 
-    <div class="test-section">
-        <h2>Webcam Test</h2>
-        <p>Description: The webcam test is designed to check the functionality and quality of the laptop's built-in webcam. It will display the camera feed, allowing you to ensure that the webcam is functioning properly and producing a clear image.</p>
-        <p>How to use: Click the "Start Webcam Test" button, and the webcam feed will be displayed on the screen. Ensure that the image is clear and that there are no issues with the camera, such as distortion, poor color reproduction, or other visual problems.</p>
-        <div id="webcam-test">
-            <div id="video-container">
-                <h3>Webcam Test</h3>
-                <select id="video-inputs"></select>
-                <button id="start-video">Start Webcam Test</button>
-                <video id="video-preview" autoplay muted playsinline></video>
-            </div>
-        </div>
-    </div>
+    <body>
+        <div class="test-section">
+          <h2>Mouse Test</h1>
+            <p>Description: The mouse test is designed to verify that all the buttons on your mouse are functioning correctly. It will visually indicate when a button is pressed, allowing you to ensure that each button is registering correctly and preventing the browser from going back or forward when the side buttons are pressed.</p>
+            <p>How to use: Click each button on your mouse inside the designated box on the screen. When a button is pressed, the corresponding box below will change color. Ensure that all buttons are registering correctly and that there are no issues with button responsiveness or button mapping. Note that right-clicking is disabled in the designated area, but you can still test the right-click button by observing the color change of the corresponding box.</p>            
+          <div class="mouse-area" oncontextmenu="return false;">
+            Click inside this box using all five mouse buttons.
+          </div>
+          <div id="mouse-test" class="keyboard">
+          </div>
+
+
+
 
     <div class="test-section">
         <h2>Speaker Test</h2>
-        <p>Description: The speaker test is designed to check the quality and functionality of the laptop's built-in speakers. It will play a series of audio clips to help you identify any potential issues with the speakers, such as poor audio quality, distortion, or lack of volume.</p>
-        <p>How to use: Click the "Start Speaker Test" button, and the test will play a series of audio clips through the laptop's speakers. Listen carefully for any issues with the audio quality, volume, or distortion.</p>
+        <p>Description: The speaker test is designed to check the functionality of the speakers. It will play a series of audio clips to help you identify any potential issues with the speakers, such as poor audio quality, distortion, or lack of volume.</p>
+        <p>How to use: Click the "Start Speaker Test" button, and the test will play a series of audio clips through the speakers. Listen carefully for any issues with the audio quality, volume, or distortion.</p>
         <button id="start-speaker">Start Speaker Test</button>
     </div>
 
     <div class="test-section">
         <h2>Microphone Test</h2>
-        <p>Description: The microphone test is designed to check the functionality and quality of the laptop's built-in microphone. It will record a short audio clip and play it back, allowing you to ensure that the microphone is functioning properly and producing clear audio.</p>
-        <p>How to use: Click the "Start Microphone Test" button, and the test will begin recording a 5-second audio clip using the laptop's built-in microphone and display a waveform of the sound. After the recording is complete, the test will play back the audio. Listen carefully for any issues with audio quality, volume, or distortion.</p>
+        <p>Description: The microphone test is designed to check the functionality and quality of the microphone. It will record a short audio clip and play it back, allowing you to ensure that the microphone is functioning properly and producing clear audio.</p>
+        <p>How to use: Click the "Start Microphone Test" button, and the test will begin recording a 5-second audio clip using the microphone and display a waveform of the sound. After the recording is complete, the test will play back the audio. Listen carefully for any issues with audio quality, volume, or distortion.</p>
         <button id="start-mic-test">Start Microphone Test</button>
         <div id="mic-test-container">
             <canvas id="audio-visualizer" width="600" height="150"></canvas>
         </div>
     </div>
-    
+
+    <div class="test-section">
+    <h2>Webcam Test</h2>
+    <p>Description: The webcam test is designed to check the functionality and quality of the webcam. It will display the camera feed, allowing you to ensure that the webcam is functioning properly and producing a clear image.</p>
+    <p>How to use: Select the webcam you want to test then click the "Start Webcam Test" button, and the webcam feed will be displayed on the screen. Ensure that the image is clear and that there are no issues with the camera, such as distortion, poor color reproduction, or other visual problems.</p>
+    <button id="start-video">Start Webcam Test</button>
+    <div id="webcam-test"></div>
+    <div class="select-container" id="video-container">
+            <select id="video-inputs"></select></div>
+            <video id="video-preview" autoplay muted playsinline></video>
+        </div>
+            </div>
+    </div>
     <script src="display-test.js"></script>
     <script src="keyboard-test.js"></script>
     <script src="webcam-test.js"></script>
     <script src="speaker-test.js"></script>
     <script src="mic-test.js"></script>
+    <script src="mouse-test.js"></script>
+    <script src="style.js"></script>
 </body>
+<footer>
+    <p>Created by <a href="rawills.uk">Rhys Wills</a>. Read about this site <a href="rawills.uk">here</a>.</p>
+  </footer>  
 </html>
